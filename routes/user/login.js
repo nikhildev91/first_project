@@ -4,9 +4,9 @@ var router = express.Router();
 var userHelper = require('../../helpers/user-helper');
 require('dotenv').config()
 
-const serviceSSID = process.env.serviceSSID
-const accountSSID = process.env.accountSSID
-const authToken = process.env.authToken
+const serviceSSID = "VA1f66b4f2f4aa0fec2e83522ae8e3acb2"
+const accountSSID = "ACbe91336549fb48eef27dadf69d6c0f9e"
+const authToken = "9d9a485e4aa81370948c2d454b525d5f"
 
 
 const client = require('twilio')(accountSSID, authToken)
