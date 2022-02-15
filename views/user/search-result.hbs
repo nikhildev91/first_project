@@ -1,0 +1,458 @@
+
+    
+    <div id="page-content">        
+        <!--Body Container-->
+        <!--Breadcrumbs-->
+        <div class="breadcrumbs-wrapper">
+        	<div class="container">
+            	<div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Shop Listview</span></div>
+            </div>
+        </div>
+        <!--End Breadcrumbs-->
+        <div class="container">
+            <div class="row">
+				<!--Sidebar-->
+            	<div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+                <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+                <div class="sidebar_tags">
+                    <!--Categories-->
+                    <div class="sidebar_widget categories filter-widget">
+                        <div class="widget-title">
+                            <h2>Categories</h2>
+                        </div>
+                        <div class="widget-content" style="">
+                            <ul class="sidebar_categories">
+                                {{#each category}}
+                                <li class="level1 sub-level"><a href="#;" class="site-nav">{{this.category}}</a>
+                                {{#if this.subcategory}}
+                                    <ul class="sublinks" style="display: none;">
+                                        {{#each this.subcategory}}
+                                        <li class="level2"><a href="/subcategory-products/{{../this.category}}/{{ this.subcategory }}" class="site-nav">{{this.subcategory}}</a></li>
+                                        {{/each}}
+                                    </ul>
+                                    {{/if}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="sidebar_widget filterBox filter-widget">
+                        <div class="widget-title">
+                            <h2>Price</h2>
+                        </div>
+                        <form action="/price-filter" method="post" class="price-filter">
+                            <div id="slider-range"></div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class=""><input id="amount" type="text" name="price"></p>
+                                    <input type="text" name="category" value="{{products.[0].category}}" hidden>
+                                </div>
+                                <div class="col-6 text-right margin-25px-top">
+                                    <button type="submit" class="btn btn-secondary btn--small">filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    {{!-- <div class="sidebar_widget filterBox filter-widget brand-filter">
+                        <div class="widget-title">
+                            <h2>Brands</h2>
+                        </div>
+                        <ul>
+                            {{#each brands}}
+                           <li>
+								<input type="checkbox" class="proBrandFilter" value="allen-vela" id="check1"
+									data-brand="{{this.brand}}" data-cat="{{../products.[0].category}}">
+								<label for="check1"><span><span></span></span>{{this.brand}}</label>
+							</li>
+                            {{/each}}
+                            
+                        </ul>
+                    </div> --}}
+                    <!--Popular Products-->
+						<div class="sidebar_widget sidePro">
+							<div class="widget-title"><h2>Popular Products</h2></div>
+							<div class="widget-content">
+								<div class="sideProSlider grid-products">
+                                    {{#each sideProduct}}
+									<div class="item">
+										<!-- start product image -->
+										<div class="product-image">
+											<!-- start product image -->
+											<a href="/category-check/product-details/{{this._id}}" class="product-img">
+												<!-- image -->
+												<img class="primary blur-up lazyload" data-src="/product-images/{{this._id}}first.jpg" src="/product-images/{{this._id}}first.jpg" alt="" title="">
+												<!-- End image -->
+												<!-- Hover image -->
+												<img class="hover blur-up lazyload" data-src="/product-images/{{this._id}}second.jpg" src="/product-images/{{this._id}}second.jpg" alt="" title="">
+												<!-- End hover image -->
+											</a>
+											<!-- end product image -->
+											
+											<!--Product Button-->
+											<div class="button-set style1">
+												<ul>
+													<li>
+														<!--Cart Button-->
+														<form class="add" action="/">
+															<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+																<i class="icon anm anm-cart-l"></i>
+																<span class="tooltip-label">Add to Cart</span>
+															</button>
+														</form>
+														<!--end Cart Button-->
+													</li>
+												
+													<li>
+														<!--Wishlist Button-->
+														<div class="wishlist-btn">
+															<button class="btn-icon wishlist add-to-wishlist" data-proid="{{this._id}}">
+																<i class="icon anm anm-heart-l"></i>
+																<span class="tooltip-label">Add To Wishlist</span>
+															</button>
+														</div>
+														<!--End Wishlist Button-->
+													</li>
+													
+												</ul>
+											</div>
+											<!--End Product Button-->
+										</div>
+										<!-- end product image -->
+										<!--start product details -->
+										<div class="product-details text-center">
+											<!-- product name -->
+											<div class="product-name">
+												<a href="/category-check/product-details/{{this._id}}">{{this.productTitle}}</a>
+											</div>
+											<!-- End product name -->
+											<!-- product price -->
+											<div class="product-price">
+												<span class="price">₹ {{this.price}}</span>
+											</div>
+											<!-- End product price -->
+											<!--Product Review-->
+											{{!-- <div class="product-review">
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star-o"></i>
+											</div> --}}
+											<!--End Product Review-->
+											<!--Color Variant -->
+											{{!-- <ul class="swatches">
+												<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
+												<li class="swatch small rounded green"><span class="tooltip-label">Green</span></li>
+												<li class="swatch small rounded gray"><span class="tooltip-label">Gray</span></li>
+												<li class="swatch small rounded aqua"><span class="tooltip-label">Aqua</span></li>
+												<li class="swatch small rounded orange"><span class="tooltip-label">Orange</span></li>
+											</ul> --}}
+											<!-- End Variant -->
+										</div>
+										<!-- End product details -->
+									</div>
+                                    {{/each}}
+									{{!-- <div class="item">
+									<!-- start product image -->
+									<div class="product-image">
+										<!-- start product image -->
+										<a href="product-layout1.html" class="product-img">
+											<!-- image -->
+											<img class="primary blur-up lazyload" data-src="/product-images/{{this._id}}first.jpg" src="/product-images/{{this._id}}first.jpg" alt="" title="">
+											<!-- End image -->
+											<!-- Hover image -->
+											<img class="hover blur-up lazyload" data-src="/user-assets/images/product-images/product2-1.jpg" src="/user-assets/images/product-images/product2-1.jpg" alt="" title="">
+											<!-- End hover image -->
+										</a>
+										<!-- end product image -->
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<form class="add" action="https://www.annimexweb.com/items/avone/cart-variant1.html" method="post">
+														<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</form>
+													<!--end Cart Button-->
+												</li>
+												<li>
+													<!--Quick View Button-->
+													<a href="javascript:void(0)" title="Quick View" class="btn-icon quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+														<i class="icon anm anm-search-plus-l"></i>
+														<span class="tooltip-label">Quick View</span>
+													</a>
+													<!--End Quick View Button-->
+												</li>
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</a>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+												<li>
+													<!--Compare Button-->
+													<div class="compare-btn">
+														<a class="btn-icon compare add-to-compare" href="compare-style2.html" title="Add to Compare">
+															<i class="icon icon-reload"></i>
+															<span class="tooltip-label">Add to Compare</span>
+														</a>
+													</div>
+													<!--End Compare Button-->
+												</li>
+											</ul>
+										</div>
+										<!--End Product Button-->
+									</div>
+									<!-- end product image -->
+									<!--start product details -->
+									<div class="product-details text-center">
+										<!-- product name -->
+										<div class="product-name">
+											<a href="product-layout1.html">Innerbloom Puffer Jacket</a>
+										</div>
+										<!-- End product name -->
+										<!-- product price -->
+										<div class="product-price">
+											<span class="price">$199.01</span>
+										</div>
+										<!-- End product price -->
+										<!--Product Review-->
+										<div class="product-review">
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+										</div>
+										<!--End Product Review-->
+										<!-- Color Variant -->
+										<ul class="swatches">
+											<li class="swatch small rounded black"><span class="tooltip-label">Black</span></li>
+											<li class="swatch small rounded navy"><span class="tooltip-label">Navy</span></li>
+											<li class="swatch small rounded purple"><span class="tooltip-label">Purple</span></li>
+										</ul>
+										<!-- End Variant -->
+									</div>
+									<!-- End product details -->
+								</div>
+									<div class="item">
+										<!-- start product image -->
+										<div class="product-image">
+											<!-- start product image -->
+											<a href="product-layout1.html" class="product-img">
+												<!-- image -->
+												<img class="primary blur-up lazyload" data-src="/user-assets/images/product-images/product3.jpg" src="/user-assets/images/product-images/product3.jpg" alt="" title="">
+												<!-- End image -->
+												<!-- Hover image -->
+												<img class="hover blur-up lazyload" data-src="/user-assets/images/product-images/product3-1.jpg" src="/user-assets/images/product-images/product3-1.jpg" alt="" title="">
+												<!-- End hover image -->
+											</a>
+											<!-- end product image -->
+											<!--Product Button-->
+											<div class="button-set style1">
+												<ul>
+													<li>
+														<!--Cart Button-->
+														<form class="add" action="https://www.annimexweb.com/items/avone/cart-variant1.html" method="post">
+															<button class="btn-icon btn btn-addto-cart" type="button" tabindex="0">
+																<i class="icon anm anm-cart-l"></i>
+																<span class="tooltip-label">Add to Cart</span>
+															</button>
+														</form>
+														<!--end Cart Button-->
+													</li>
+													<li>
+														<!--Quick View Button-->
+														<a href="javascript:void(0)" title="Quick View" class="btn-icon quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+															<i class="icon anm anm-search-plus-l"></i>
+															<span class="tooltip-label">Quick View</span>
+														</a>
+														<!--End Quick View Button-->
+													</li>
+													<li>
+														<!--Wishlist Button-->
+														<div class="wishlist-btn">
+															<a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html">
+																<i class="icon anm anm-heart-l"></i>
+																<span class="tooltip-label">Add To Wishlist</span>
+															</a>
+														</div>
+														<!--End Wishlist Button-->
+													</li>
+													<li>
+														<!--Compare Button-->
+														<div class="compare-btn">
+															<a class="btn-icon compare add-to-compare" href="compare-style2.html" title="Add to Compare">
+																<i class="icon icon-reload"></i>
+																<span class="tooltip-label">Add to Compare</span>
+															</a>
+														</div>
+														<!--End Compare Button-->
+													</li>
+												</ul>
+											</div>
+											<!--End Product Button-->
+										</div>
+										<!-- end product image -->
+										<!--start product details -->
+										<div class="product-details text-center">
+											<!-- product name -->
+											<div class="product-name">
+												<a href="product-layout1.html">Button Up Top Black</a>
+											</div>
+											<!-- End product name -->
+											<!-- product price -->
+											<div class="product-price">
+												<span class="price">$99.01</span>
+											</div>
+											<!-- End product price -->
+											<!--Product Review-->
+											<div class="product-review">
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star"></i>
+												<i class="font-13 fa fa-star-o"></i>
+												<i class="font-13 fa fa-star-o"></i>
+												<i class="font-13 fa fa-star-o"></i>
+											</div>
+											<!--End Product Review-->
+										   <!-- Color Variant -->
+											<ul class="swatches">
+												<li class="swatch small rounded red"><span class="tooltip-label">red</span></li>
+												<li class="swatch small rounded orange"><span class="tooltip-label">orange</span></li>
+												<li class="swatch small rounded yellow"><span class="tooltip-label">yellow</span></li>
+											</ul>
+											<!-- End Variant -->
+										</div>
+										<!-- End product details -->
+									</div> --}}
+								</div>
+							</div>
+						</div>
+
+						<!--End Popular Products-->
+
+                </div>
+            </div>
+				<!--End Sidebar-->
+				<!--Main Content-->
+				<div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
+					{{!-- <div class="page-title"><h1>Shop Listview</h1></div>
+					<div class="category-banner">
+						<img src="/user-assets/images/collection-banner/collection-banner.jpg" data-src="/user-assets/images/collection-banner/collection-banner.jpg" alt=""/>
+					</div>
+					<div class="category-description">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
+					</div> --}}
+					<div class="productList product-load-more">
+						<!--Toolbar-->
+						<button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
+						<div class="toolbar">
+							<div class="filters-toolbar-wrapper">
+								<div class="row">
+									{{!-- <div class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
+										<a href="shop-left-sidebar.html" title="Grid View" class="change-view">
+											<i class="anm anm-th" aria-hidden="true"></i>
+										</a>
+										<a href="shop-list-view.html" title="List View" class="change-view change-view--active">
+											<i class="anm anm-th-list" aria-hidden="true"></i>
+										</a>
+									</div> --}}
+									{{!-- <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+										<span class="filters-toolbar__product-count">Showing: 15 Results</span>
+									</div> --}}
+									{{!-- <div class="col-4 col-md-4 col-lg-4 text-right">
+										<div class="filters-toolbar__item">
+											<label for="SortBy" class="hidden">Sort</label>
+											<select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+												<option value="title-ascending" selected="selected">Sort</option>
+												<option>Best Selling</option>
+												<option>Alphabetically, A-Z</option>
+												<option>Alphabetically, Z-A</option>
+												<option>Price, low to high</option>
+												<option>Price, high to low</option>
+												<option>Date, new to old</option>
+												<option>Date, old to new</option>
+											</select>
+											<input class="collection-header__default-sort" type="hidden" value="manual">
+										</div>
+									</div> --}}
+
+								</div>
+							</div>
+						</div>
+						<!--End Toolbar-->
+						<div class="list-view-items grid--view-items">
+							{{#each searchProducts}}
+							<!--ListView Item-->
+                            <div class="list-product list-view-item">
+                                <div class="list-view-item__image-column">
+                                    <div class="list-view-item__image-wrapper">
+                                        <!-- Image -->
+                                        <a href="/category-check/product-details/{{this._id}}"><img class="list-view-item__image blur-up lazyload" data-src="/product-images/{{this._id}}first.jpg" src="/product-images/{{this._id}}first.jpg" alt="image" title="product"></a>
+                                        <!-- End Image -->
+                                    </div>
+                                </div>
+                                <div class="list-view-item__title-column">
+                                    <div class="h4 grid-view-item__title"><a href="/category-check/product-details/{{this._id}}">{{this.productTitle}}</a></div>
+                                    <!-- Product Review -->
+                                    {{!-- <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p> --}}
+                                    <!-- End Product Review -->
+                                    <!-- Sort Description -->
+                                    <p>{{this.productDetails}}</p>
+                                    <!-- End Sort Description -->
+                                    <!-- Price -->
+                                    <p class="product-price grid-view-item__meta">
+										{{#if offer}}
+                                        <span class="old-price">₹{{this.oldPrice}}</span>
+										{{/if}}
+                                        <span class="product-price__price product-price__sale"><span class="money">₹{{this.price}}</span></span>
+                                    </p>
+                                    <!-- End Price -->
+                                    <form class="variants" action="#">
+                                    	<a href="/category-check/product-details/{{this._id}}" class="btn btn--small" type="button">View Details</a>
+	                                </form>
+									<div class="button-box">
+										<div class="wishlist-btn">
+                                                    <button class="btn-icon wishlist add-to-wishlist"
+                                                       data-proid="{{this._id}}">
+                                                        <i class="icon anm anm-heart-l"></i>
+                                                        <span class="tooltip-label">Add To Wishlist</span>
+                                                    </button>
+                                                </div>
+										<div class="btn-addto-cart">
+                                                    <a class="btn-icon btn btn-addto-cart"
+                                                        href="/add-to-cart/{{this._id}}">
+                                                        <i class="icon anm anm-cart-l"></i>
+                                                        <span class="tooltip-label">Add to Cart</span>
+                                                    </a>
+                                                </div>
+									</div>
+                                </div>
+                            </div>
+                            <!--End ListView Item-->
+							{{/each}}
+						</div>
+						<div class="infinitpaginOuter">
+							<div class="infinitpagin">	
+								<a href="#" class="btn loadMore">Load More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--End Main Content-->
+			</div>
+        
+        </div><!--End Body Container-->
+        
+    </div><!--End Page Wrapper-->
+  

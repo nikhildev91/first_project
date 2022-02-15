@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100&family=Rowdies:wght@300&display=swap" rel="stylesheet">
+
+        	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+		<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet"/>
+		<script src="https://unpkg.com/dropzone"></script>
+		<script src="https://unpkg.com/cropperjs"></script>
+        
+   
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+        {{#if isUser }}
+        {{!----------------------- User Header Files Started ----------------------------------------}}
+            {{#if otpverify}}
+                {{!----------------------- User OTP Page Files Started ----------------------------------------}}
+                <meta charset="utf-8" />
+                <title>FootPrint</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta content="Responsive bootstrap 4 admin template" name="description" />
+                <meta content="Coderthemes" name="author" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <link rel="shortcut icon" href="/images/logo.jpg">
+                <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+                <link href="/admin-assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+                <link href="/admin-assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+                {{!----------------------- User OTP Page Files Ended ----------------------------------------}}
+            {{else}}
+                {{!----------------------- User Other than OTP Page Files Started ----------------------------------------}}
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta http-equiv="x-ua-compatible" content="ie=edge">
+                <title>FootPrint</title>
+                <meta name="description" content="description">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="shortcut icon" href="/images/logo.jpg" />
+                <link rel="stylesheet" href="/user-assets/css/plugins.css">
+                <link rel="stylesheet" href="/user-assets/css/style.css">
+                <link rel="stylesheet" href="/user-assets/css/responsive.css">
+            {{/if}}
+                {{!----------------------- User Other than OTP Page Files Started ----------------------------------------}}
+
+        {{else}}
+            {{#if isadmin}}
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.css"/>
+
+
+
+ {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script> --}}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.1/css/dataTables.dateTime.min.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+                {{!-- <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"> --}}
+                {{!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> --}}
+                {{#if adminLogin}}
+                    <meta charset="utf-8" />
+                    <title>FootPrint</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta content="Responsive bootstrap 4 admin template" name="description" />
+                    <meta content="Coderthemes" name="author" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <link rel="shortcut icon" href="/images/logo.jpg">
+                    <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+                    <link href="/admin-assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+                    <link href="/admin-assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+                {{else}}
+                    <meta charset="utf-8" />
+                    <title>FootPrint</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta content="Responsive bootstrap 4 admin template" name="description" />
+                    <meta content="Coderthemes" name="author" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <link rel="shortcut icon" href="/images/logo.jpg">
+                    <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+                    <link href="/admin-assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+                    <link href="/admin-assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.min.css" integrity="sha512-6QxSiaKfNSQmmqwqpTNyhHErr+Bbm8u8HHSiinMEz0uimy9nu7lc/2NaXJiUJj2y4BApd5vgDjSHyLzC8nP6Ng==" crossorigin="anonymous" referrerpolicy="no-referrer" />                      
+                    <link rel="stylesheet" href="/stylesheets/main-style.css">
+
+                      <link rel="stylesheet" href="/stylesheets/admin-style.css">
+                      
+                {{/if}}
+            {{/if}}
+        {{/if}}
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+         {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.css">
+         <link rel="stylesheet" href="/stylesheets/main-style.css"> --}}
+
+    </head>
+  {{!-- {{{body}}} --}}
+
+    {{#if isUser }}
+    <body>
+        {{#if otpverify}}
+            {{{body}}}
+            <script src="/admin-assets/js/vendor.min.js"></script>
+            <script src="/admin-assets/js/app.min.js"></script>
+        {{else}}
+            {{#if isUserIndex }}
+                {{>user-index-header}}
+            {{else }}
+                {{>user-header}}
+            {{/if}}
+
+            {{{ body }}}
+    
+            {{#if isUserIndex }}
+                {{>user-index-footer}}
+            {{else }}
+                {{>user-footer}}
+            {{/if}}
+        {{/if}}
+    </body>
+
+    {{else}}
+        {{#if isadmin}}
+            {{#if adminLogin }}
+                <body>
+                    {{{ body }}}
+                    <script src="/admin-assets/js/vendor.min.js"></script>
+                    <script src="/admin-assets/js/app.min.js"></script>
+                </body>
+            {{else }}
+            <body>
+            <div id="wrapper">
+                {{>admin-header}}
+                <div class="content-page">
+    <div class="content">
+         <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <h4 class="header-title mb-3">Welcome !</h4>
+                    </div>
+                </div>
+            </div>
+                {{{body}}}
+                <footer class="footer">
+                <div class="container-fluid">
+                <div class="row">
+                <div class="col-md-12">
+                2017 - 2020 &copy; Simple theme by <a href="#">Coderthemes</a>
+                </div>
+                </div>
+                </div>
+                </footer>
+            </div>
+            </div>
+            </div>
+            <script src="/admin-assets/js/vendor.min.js"></script>
+            <script src="/admin-assets/libs/morris-js/morris.min.js"></script>
+            <script src="/admin-assets/libs/raphael/raphael.min.js"></script>
+            {{!-- <script src="/admin-assets/js/pages/dashboard.init.js"></script> --}}
+            <script src="/admin-assets/js/app.min.js"></script>
+
+
+            
+
+
+
+            </body>
+        {{/if }}
+
+
+
+    {{/if}}
+{{/if}}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        
+        <script  src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.js" integrity="sha512-witv14AEvG3RlvqCAtVxAqply8BjTpbWaWheEZqOohL5pxLq3AtIwrihgz7SsxihwAZkhUixj171yQCZsUG8kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {{!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="/admin-assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Buttons examples -->
+        <script src="/admin-assets/libs/datatables/dataTables.buttons.min.js"></script>
+        <script src="/admin-assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="/admin-assets/libs/datatables/dataTables.keyTable.min.js"></script>
+        <script src="/admin-assets/libs/datatables/dataTables.select.min.js"></script>
+        <script src="/admin-assets/libs/jszip/jszip.min.js"></script>
+        <script src="/admin-assets/libs/pdfmake/pdfmake.min.js"></script>
+        <script src="/admin-assets/libs/pdfmake/vfs_fonts.js"></script>
+        <script src="/admin-assets/libs/datatables/buttons.html5.min.js"></script>
+        <script src="/admin-assets/libs/datatables/buttons.print.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="/admin-assets/libs/datatables/dataTables.responsive.min.js"></script>
+        <script src="/admin-assets/libs/datatables/responsive.bootstrap4.min.js"></script> --}}
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <!-- Datatables init -->
+        {{!-- <script src="/admin-assets/js/pages/datatables.init.js"></script> --}}
+
+        <script src="/javascripts/admin-script.js"></script>
+        <script src="/javascripts/user-script.js"></script>
+        <script src="/javascripts/admin-script.js"></script>
+        <script src="/javascripts/script.js"></script>
+
+
+        <script src="/admin-assets/js/dashboard_new.js"></script>
+
+       
+
+
+{{!-- 
+        <script src="assets/js/pages/morris.init.js"></script>
+
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.time.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.resize.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.pie.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.selection.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.stack.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.orderBars.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.axislabels.js"></script>
+        <script src="/admin-assets/libs/flot-charts/jquery.flot.js"></script>
+        <script src="assets/libs/jquery-knob/jquery.knob.min.js"></script>
+        <script src="/admin-assets/js/pages/flot.init.js"></script>
+ --}}
+
+
+
+
+</html>
+
+
+{{!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+

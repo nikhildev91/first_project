@@ -1,0 +1,38 @@
+<h1 style="text-align: center;">Stock Report</h1>
+<div class="co1-12 mt-3">
+
+  
+
+  {{!-- <table class="table table-bordered mt-2" id="datatable-buttons"> --}}
+    <table id="datatable-buttons1" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+   <thead>
+      <tr>
+        <th>Product Name</th>
+         <th>Category</th>
+         <th>Product Price</th>
+        <th>Sold Stock</th>
+        <th>Balance Stock</th>
+        <th>Total Revenue</th>
+      
+        
+      </tr>
+    </thead>
+    <tbody id="myTable">
+   {{#each stockReport}}
+      <tr>
+        <td>{{this.productTitle}}</td>
+        <td style="text-align: center;">{{this.category}}</td>
+        <td style="text-align: center;">{{this.price}}</td>
+        <td style="text-align: center;">{{this.soldQuantity}}</td>
+        <td  style="text-align: center;">{{this.quantity}}</td>
+        <td style="text-align: center;">{{this.total}}</td>
+       
+
+         </tr>
+        {{/each}}
+     
+    </tbody>
+  </table>
+  
+
+</div>

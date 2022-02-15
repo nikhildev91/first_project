@@ -1,0 +1,55 @@
+/* Limit image width to avoid overflow the container */
+img {
+    max-width: 100%; /* This rule is very important, please do not ignore this! */
+  }
+  
+  #canvas {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background-color: #ffffff;
+    cursor: default;
+    border: 1px solid black;
+  }
+
+
+  /* Error color for form validation */
+ .error{
+   color: red;
+ }
+ .height-auto{
+  height: auto;
+  width: auto;
+}
+
+.morris-hover {
+  position:absolute;
+  z-index:1000;
+}
+
+.morris-hover.morris-default-style {     border-radius:10px;
+  padding:6px;
+  color:#666;
+  background:rgba(255, 255, 255, 0.8);
+  border:solid 2px rgba(230, 230, 230, 0.8);
+  font-family:sans-serif;
+  font-size:12px;
+  text-align:center;
+}
+
+.morris-hover.morris-default-style .morris-hover-row-label {
+  font-weight:bold;
+  margin:0.25em 0;
+}
+
+.morris-hover.morris-default-style .morris-hover-point {
+  white-space:nowrap;
+  margin:0.1em 0;
+}
+
+svg { width: 100%; }
+
+h1{
+  font-family: 'Roboto', sans-serif;
+font-family: 'Rowdies', cursive;
+}

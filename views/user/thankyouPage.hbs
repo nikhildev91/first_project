@@ -1,0 +1,150 @@
+
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+               
+                <div class="card p-3">
+                    <h1 style="text-align: center; font-size: 50px;
+
+    color: #33b73e;">Thank You !</h1>
+                    <div class="invoice p-5">
+                        <h2>Your order Confirmed!</h2> <span class="font-weight-bold d-block mt-4">Hello, {{orderDetails.deliveryDetails.name}}</span> <span>You order has been confirmed and will be shipped in next two days!</span>
+                        <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Order Date</span> <span>{{orderDetails.date}}</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Order ID</span> <span>{{orderDetails._id}}</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Payment</span> <span>{{orderDetails.paymentMethod}}</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Shiping Address</span> <span>{{orderDetails.deliveryDetails.address}}</span> </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    {{#each products}}
+                                  
+                                  
+                                    <tr>
+                                        <td width="20%"> <img src="/product-images/{{this.productList._id}}first.jpg" width="90"> </td>
+                                        <td width="60%"> <span class="font-weight-bold">{{this.productList.productTitle}}</span>
+                                      
+                                            <div class="product-qty"> <span class="d-block">Quantity : {{this.products.productsTotal.quantity}}</span></div>
+                                      
+                                        </td>
+                                        <td width="20%">
+                                            <div class="text-right"> <span class="font-weight-bold">₹ {{this.products.productsTotal.total}}</span> </div>
+                                        </td>
+                                    </tr>
+                                 
+                                    {{/each}}
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-md-5">
+                                <table class="table table-borderless">
+                                    <tbody class="totals">
+                                        {{#if orderDetails.buynow}}
+                                        <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span>₹ {{products.[0].products.productsTotal.total}}</span> </div>
+                                            </td>
+                                        </tr>
+                                       {{#if orderDetails.walletRedeem}}
+                                         <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Used Wallet Amount</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span>- ₹ {{wallet}}</span> </div>
+                                            </td>
+                                        </tr>
+                                       {{/if}}
+                                        {{else}}
+                                        {{#if orderDetails.walletRedeem}}
+                                        <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span>₹ {{products.[0].products.subtotal.oldtotal}}</span> </div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Used Wallet Amount</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span>- ₹ {{wallet}}</span> </div>
+                                            </td>
+                                        </tr>
+                                        {{else}}
+                                        <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span>₹ {{products.[0].products.subtotal.total}}</span> </div>
+                                            </td>
+                                        </tr>
+                                        {{/if}}
+                                        {{/if}}
+                                        
+                                        
+                                        {{#if orderDetails.couponApplied}}
+                                        <tr>
+                                            <td>
+                                                <div class="text-left"> <span class="text-muted">Coupon Applied <b>{{orderDetails.couponDiscount}}% OFF</b></span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span class="text-success">₹ {{orderDetails.couponDiscountAmount}}</span> </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-top border-bottom">
+                                            <td>
+                                                <div class="text-left"> <span class="font-weight-bold">Payable Amount</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span class="font-weight-bold">₹ {{orderDetails.payableAmount}}</span> </div>
+                                            </td>
+                                        </tr>
+                                        {{else}}
+                                        
+                                        <tr class="border-top border-bottom">
+                                            <td>
+                                                <div class="text-left"> <span class="font-weight-bold">Payable Amount</span> </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-right"> <span class="font-weight-bold">₹ {{products.[0].products.subtotal.total}}</span> </div>
+                                            </td>
+                                        </tr>
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>We will be sending shipping confirmation email when the item shipped successfully!</p>
+                        <p class="font-weight-bold mb-0">Thanks for shopping with us!</p> <span>Nike Team</span>
+                    </div>
+                    <div class="d-flex justify-content-between footer p-3"> <span><a href="">Continue To Shopping >></a></span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

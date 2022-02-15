@@ -1,0 +1,375 @@
+<div id="page-content">
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a href="/" title="Back to the home page">Home</a> <span
+                    aria-hidden="true">|</span> <span>Checkout</span></div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <!--Page Title with Image-->
+    <div class="page-title">
+        <h1>Checkout</h1>
+    </div>
+    <!--End Page Title with Image-->
+    <div class="container">
+        <div class="mt-2"></div>
+        <div class="card card--grey" id="couponapplybox" style="display: block;">
+            <div class="card-body">
+                <h2>Apply Couponcode</h2>
+                <form action="" id="coupon-Form">
+                    {{!-- {{#if buyOne}}
+                    <input type="text" name="buyone" value="true" id="" hidden>
+
+                    <input type="text" name="productPrice" value="{{product.price}}" hidden>
+                    {{else}} --}}
+                    <input type="text" name="buyone" value="false" id="" hidden>
+                    <input type="text" name="grandTotal" value="{{subTotal}}" hidden>
+                    {{!-- {{/if}} --}}
+                    <label class="text-uppercase">Enter Coupon code:</label>
+                    <div class="form-flex">
+                        <div class="form-group"><input type="text" name="couponcode" class="form-control"></div><button
+                            type="submit" class="btn btn--form btn--alt">Apply</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--Main Content-->
+        <form method="post" id="Checkout-form">
+            <input type="text" name="userId" value="{{userId}}" hidden>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+
+
+                    <div class="card card--grey">
+                        <div class="card-body">
+                            <h2>select ADDRESS</h2>
+                            {{!-- <div class="card col-12" style="background-color: black;">
+                                <h4 style="text-align: end; color: white; padding-top:10px"><a href="">+ Add New
+                                        Address</a></h4>
+                            </div> --}}
+
+                            {{#each getUserAddressForPlaceOrder.address}}
+                            <hr>
+
+                            <div class="card p-4">
+
+
+
+
+
+
+                                <div class="row mt-2">
+                                    <h6>{{this.addressType}}</h6>
+
+                                </div>
+                                <span style="font-weight: bold;">{{this.firstname}} {{this.lastname}} <span
+                                        style="margin-left: 15px;"> {{this.phone}}</span></span>
+
+                                <p>{{this.address}}, <br>{{this.landmark}}, {{this.district}}, {{this.state}},
+                                    <br>-{{this.pincode}}</p>
+                                <P><span style="font-weight: bold;">Alternative Mobile Number :</span>
+                                    <span>{{this.alternativePhone}}</span></P>
+
+
+                                <button class="btn btn-dark mt-2" type="button"
+                                    onclick="getComfirmAddress('{{this._id}}','{{../getUserAddressForPlaceOrder.userId}}')"
+                                    style="float:right;">select</button>
+
+                            </div>
+                            <hr>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-lg-4 mt-2 mt-md-0">
+                    <div class="card card--grey">
+                        <div class="card-body">
+                            <h2>Billing ADDRESS</h2> <span class="text-danger">(Please Check Address)</span>
+                            <div class="row mt-2">
+                                <div class="col-sm-6"><label class="text-uppercase">First Name:</label>
+                                    <div class="form-group"><input id="firstname" name="firstname" value="" type="text"
+                                            class="form-control"></div>
+                                </div>
+                                <div class="col-sm-6"><label class="text-uppercase">Last Name:</label>
+                                    <div class="form-group"><input name="lastname" type="text" id="lastname"
+                                            class="form-control"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="row mt-2">
+                                <div class="col-sm-12"><label class="text-uppercase">Mobile:</label>
+                                    <div class="form-group"><input name="phone" id="phone" type="text"
+                                            class="form-control"></div>
+                                </div>
+
+                            </div>
+
+                            <label class="text-uppercase">Address:</label>
+                            <div class="form-group">
+                                <input id="address" name="address" type="text" class="form-control">
+
+                            </div>
+
+
+
+                            <label class="text-uppercase">States:</label>
+                            <div class="form-group select-wrapper">
+                                <select name="state" class="form-control">
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                                    </option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                            </div>
+                            <label class="text-uppercase">District:</label>
+                            <div class="form-group">
+                                <input name="district" id="district" type="text" class="form-control">
+
+                            </div>
+
+                            <label class="text-uppercase">Pincode:</label>
+                            <div class="form-group">
+                                <input name="pincode" id="pincode" type="text" class="form-control">
+
+                            </div>
+                            <label class="text-uppercase">Landmark:</label>
+                            <div class="form-group">
+                                <input name="landmark" id="landmark" type="text" class="form-control">
+
+                            </div>
+
+                            <label class="text-uppercase">Alternative Mobile:</label>
+                            <div class="form-group">
+                                <input name="alternativePhone" id="alternativePhone" type="text" class="form-control">
+
+                            </div>
+                             <div class="form-group mt-3">
+<input type="checkbox" id="vehicle2" name="saveAddress" value="true">
+  <label for="vehicle2" style="font-size: 20px;">Save This Address</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="mt-2"></div>
+                    <div class="card card--grey">
+                        <div class="card-body">
+                            <h2>PAYMENT METHOD</h2>
+                            <div class="clearfix"><input id="formcheckoutRadio4" value="COD" name="paymentMethod"
+                                    type="radio" class="radio height-auto" checked="checked"> <label
+                                    for="formcheckoutRadio4">COD</label></div>
+                            <div class="clearfix"><input id="formcheckoutRadio5" value="Razorpay" name="paymentMethod"
+                                    type="radio" class="radio height-auto"> <label
+                                    for="formcheckoutRadio5">Razorpay</label></div>
+                            <div class="clearfix"><input id="formcheckoutRadio5" value="Paypal" name="paymentMethod"
+                                    type="radio" class="radio height-auto"> <label
+                                    for="formcheckoutRadio5">Paypal</label></div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 col-lg-4 mt-2 mt-md-0">
+                    {{!-- {{#if buyOne}}
+                         <div class="row card walletbox" style="display: block;">
+                            <label for="chkPassport">
+                            <input type="checkbox" class="wallet" id="chkPassport" data-wallet="{{wallet}}"data-buyoneprice="{{product.price}}" />
+                            <span style="font-size: 25px; font-weight: bold; margin-left: 10px;">Wallet : </span> <span style="font-size: 25px; font-weight: bold;">₹ {{wallet}}</span>
+                            </label>
+                         </div>
+                    {{else}} --}}
+                    <div class="row card walletbox" style="display: block;">
+                        <label for="chkPassport">
+                            <input type="checkbox" class="cartbuywallet" id="chkPassport" data-wallet="{{wallet}}"
+                                data-price="{{subTotal}}" />
+                            <span style="font-size: 25px; font-weight: bold; margin-left: 10px;">Wallet : </span> <span
+                                style="font-size: 25px; font-weight: bold;">₹ {{wallet}}</span>
+                        </label>
+
+                    </div>
+                    {{!-- {{/if}} --}}
+                    <h2 class="title mt-5">ORDER SUMMARY</h2>
+                    <div class="table-responsive-sm order-table">
+                        <table class="bg-white table table-bordered table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-left"></th>
+                                    <th class="text-left">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <input type="text" name="buynow" id="" value="false" hidden>
+                                {{#each getProductsForPlaceOrder}}
+                                <tr>
+                                    <td><a href="#" class="thumb"><img class="cart__image"
+                                                src="/product-images/{{this.product._id}}first.jpg" alt=""></a></td>
+                                    <td class="text-left">{{this.product.productTitle}}</td>
+                                    <td>₹ {{this.product.price}}</td>
+                                    <td>{{this.quantity}}</td>
+
+
+                                    <td>₹ {{this.productTotal}}</td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                            <tfoot class="font-weight-600" id="checkout_form">
+                                {{!-- <tr>
+                                    <td colspan="4" class="text-right">Shipping </td>
+                                    <td>$50.00</td>
+                                </tr> --}}
+                                <tr>
+                                    <td colspan="4" class="text-right">Total</td>
+                                    <td>₹ {{subTotal}}</td>
+                                    <input type="text" name="grandTotal" value="{{subTotal}}" hidden>
+                                    <input type="text" id="" name="couponDiscount" class="couponDiscount" value=""
+                                        hidden>
+                                    <input type="text" id="" name="couponDiscountAmount" class="couponDiscountAmount"
+                                        value="" hidden>
+                                    <input type="text" id="" name="appliedgrandTotal" class="appliedgrandTotal" value=""
+                                        hidden>
+                                    <input type="text" name="appliedCoupon" class="appliedCoupon" value="false" hidden>
+                                </tr>
+                                <tr class="walletappllied" style="display: none;">
+                                    <td colspan="4" class="text-right">Used Wallet Amount</td>
+                                    <td>- ₹ {{wallet}}</td>
+
+                                </tr>
+                                <tr class="walletappllied" style="display: none;">
+                                    <td colspan="4" class="text-right">Payable Amount</td>
+                                    <td>₹ <span class="afterwalletapply"></span></td>
+                                    <input type="text" class="afterwalletapply" name="amountAfterAppliedWallet" value=""
+                                        hidden>
+                                    <input type="text" class="afterwallet" name="walletApplied" value="" hidden>
+
+                                </tr>
+                            </tfoot>
+                            
+
+                        </table>
+                    </div>
+                    <div class="mt-2"></div>
+                    <div class="clearfix"><button type="submit" onclick="return checkOutValidate()" class="btn btn-large btn--lg w-100">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!--End Main Content-->
+    </div>
+    <!--End Body Container-->
+
+</div>
+<!--End Page Wrapper-->
+
+
+<!--Scoll Top-->
+<span id="site-scroll"><i class="icon anm anm-arw-up"></i></span>
+<!--End Scoll Top-->
+
+{{#if userSession}}
+<!--MiniCart Drawer-->
+<div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="cart-drawer" class="block block-cart">
+                <a href="javascript:void(0);" class="close-cart" data-dismiss="modal" aria-label="Close"><i
+                        class="anm anm-times-r"></i></a>
+                <h4>Your cart ({{cartCount}} Items)</h4>
+                <div class="minicart-content">
+                    <ul class="clearfix">
+                        {{#each cartProducts}}
+                        <li class="item clearfix">
+                            <a class="product-image" href="#">
+                                <img src="/product-images/{{this.product._id}}first.jpg" alt="{{this.product.productTitle}}" title="">
+                            </a>
+                            <div class="product-details">
+                                <a href="#" class="remove"><i class="anm anm-times-sql" aria-hidden="true"></i></a>
+                                <a href="#" class="edit-i remove"><i class="icon icon-pencil"
+                                        aria-hidden="true"></i></a>
+                                <a class="product-title" href="cart-style1.html">{{this.product.productTitle}}</a>
+                                
+                                 <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus btn_chng_qty" data-type="-1" data-id="{{this._id}}" data-productid="{{this.product._id}}">
+                                                <i class="anm anm-minus-r" aria-hidden="true"></i>
+                                            </a>
+                                            <span class="cart__qty-input qty qty_{{this.product._id}}" id="{{this.product._id}}">{{this.quantity}}</span>
+                                            <a class="qtyBtn plus btn_chng_qty" data-type="1" data-id="{{this._id}}" data-productid="{{this.product._id}}">
+                                                <i class="anm anm-plus-r" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+											
+                                    </div>
+                                <div class="priceRow">
+                                    <div class="product-price">
+                                        <span class="money">Rs. {{this.product.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                       
+                    </ul>
+                </div>
+                <div class="minicart-bottom">
+                    <a href="/add-to-cart" class="btn btn-secondary cart-btn">View Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+<!--End MiniCart Drawer-->
+
+<!-- Including Jquery -->
+<script src="/user-assets/js/vendor/jquery-min.js"></script>
+<script src="/user-assets/js/vendor/js.cookie.js"></script>
+<!-- Including Javascript -->
+<script src="/user-assets/js/plugins.js"></script>
+<script src="/user-assets/js/main.js"></script>
+
+</div>
+</body>

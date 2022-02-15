@@ -1,0 +1,179 @@
+<body class="template-index index-demo2">
+<div id="pre-loader">
+    <img src="/user-assets/images/loader.gif" alt="Loading..." />
+</div>
+<div class="page-wrapper">
+    <header class="header animated d-flex align-items-center header-2">
+        <div class="container-fluid">
+            <div class="row">
+                <!--Mobile Icons-->
+                <div class="col-4 col-sm-4 col-md-4 d-block d-lg-none mobile-icons">
+                    <!--Mobile Toggle-->
+                    <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                        <i class="icon anm anm-times-l"></i>
+                        <i class="anm anm-bars-r"></i>
+                    </button>
+                    <!--End Mobile Toggle-->
+                    <!--Search-->
+                    <div class="site-search iconset">
+                        <i class="icon anm anm-search-l"></i>
+                    </div>
+                    <!--End Search-->
+                </div>
+                <!--Mobile Icons-->
+                <!--Desktop Logo-->
+                <div class="logo col-4 col-sm-4 col-md-4 col-lg-1 align-self-center">
+                    <a href="/">
+                       <h1 style="font-weight: bolder; font-size: 19px;"> FootPrint</h1>
+                    </a>
+                </div>
+                <!--End Desktop Logo-->
+                <div class="col-1 col-sm-1 col-md-1 col-lg-9 align-self-center d-menu-col">
+                    <!--Desktop Menu-->
+                    <nav class="grid__item" id="AccessibleNav">
+                        <ul id="siteNav" class="site-nav medium left hidearrow">
+                            <li class="lvl1 parent dropdown"><a href="/">HOME <i
+                                        class="anm anm-angle-down-l"></i></a>
+                            </li>
+                                {{#each category}}
+                            <li class="lvl1 parent dropdown"><a href="/category-check/{{this.category}}">{{this.category}}<i class="anm anm-angle-down-l"></i></a>
+                                
+                                        {{#if this.subcategory}}
+
+                                <ul class="dropdown">
+                                    {{#each this.subcategory }}
+                                    <li><a href="/subcategory-products/{{../this.category}}/{{ this.subcategory }}" class="site-nav">{{ this.subcategory }}</a></li>
+                                    {{/each }}
+                                </ul>
+                                {{/if}}
+                            </li>
+                            {{/each}}
+                            
+                        </ul>
+                    </nav>
+                    <!--End Desktop Menu-->
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-2 align-self-center icons-col text-right">
+                    <!--Search-->
+                    <div class="site-search iconset">
+                        <i class="icon anm anm-search-l"></i>
+                    </div>
+                    <div class="search-drawer">
+                        <div class="container">
+                            <span class="closeSearch anm anm-times-l"></span>
+                            <h3 class="title">What are you looking for?</h3>
+                            <div class="block block-search">
+                                <div class="block block-content">
+                                    <form class="form minisearch" id="header-search" action="/search-result" method="post">
+                                        <label for="search" class="label"><span>Search</span></label>
+                                        <div class="control">
+                                            <div class="searchField">
+                                                <div class="search-category">
+                                                    <select id="rgsearch-category" name="category">
+                                                        <option value="0">All Categories</option>
+                                                        {{#each category}}
+                                                        <option value="{{this.category}}">{{this.category}}</option>
+                                                        {{/each}}
+                                                        
+                                                    </select>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input id="search" type="text" name="searchItem" value=""
+                                                        placeholder="Search for products, brands..." class="input-text">
+                                                    <button type="submit" title="Search" class="action search"
+                                                        ><i class="icon anm anm-search-l"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Search-->
+                    
+                    <!--Wishlist-->
+                    <div class="wishlist-link iconset">
+                        <a href="/wishlist">
+                        <i class="icon anm anm-heart-l"></i>
+                        <span class="wishlist-count">{{wishlistCount}}</span></a>
+                        
+                    </div>
+                    <!--End Wishlist-->
+                    <!--Minicart Dropdown-->
+                    <div class="header-cart iconset">
+                        <a href="/add-to-cart" class="site-header__cart btn-minicart" data-toggle="modal"
+                            data-target="#minicart-drawer">
+                            <i class="icon anm anm-bag-l"></i>
+                            <span class="site-cart-count">{{cartCount}}</span>
+                        </a>
+                    </div>
+                    <!--End Minicart Dropdown-->
+                    <!--Setting Dropdown-->
+                    <div class="setting-link iconset">
+                        <i class="icon fa fa-user"></i>
+                    </div>
+                    <div id="settingsBox">
+                        <div class="customer-links">
+                            
+                            {{#if userSession}}
+                           
+                            <p class="text-center" style="font-weight: bold;"><a href="/profile"> Profile</a></p>
+                            <p><a href="/login/logout" class="btn">Logout</a></p>
+                            {{else}}
+                            <p><a href="/login" class="btn">Login</a></p>
+                            <p class="text-center">New User? <a href="/signup" class="register">Create an
+                                    Account</a></p>
+                            {{/if}}
+                            
+                        </div>
+                      
+                    </div>
+                    <!--End Setting Dropdown-->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End Header-->
+
+
+
+
+    <!--Mobile Menu-->
+    <div class="mobile-nav-wrapper" role="navigation">
+        <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
+        <ul id="MobileNav" class="mobile-nav">
+            <li class="lvl1 parent megamenu"><a href="/">Home</a>
+                
+            </li>
+                 {{#each category}}
+            <li class="lvl1 parent megamenu"><a href="/category-check/{{this.category}}">{{this.category}}<i class="anm anm-plus-l"></i></a>
+                <ul>
+                    {{#each this.subcategory }}
+                    <li><a href="#" class="site-nav">{{ this.subcategory }}<i class="anm anm-plus-l"></i></a>
+                       
+                    </li>
+                    {{/each}}
+                    
+                </ul>
+            </li>
+            {{/each}}
+       
+
+        </ul>
+    </div>
+    <!--End Mobile Menu-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

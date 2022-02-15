@@ -1,0 +1,49 @@
+                            {{!-- {{#if buyOne}}
+                            {{!-- buy now body start --}}
+                            <input type="text" name="proId" value="{{product._id}}" hidden>
+                            <input type="text" name="buynow" id="" value="true" hidden>
+                            <input type="text" id="" name="couponDiscount" class="couponDiscount" value="" hidden>
+                            <input type="text" id="" name="couponDiscountAmount" class="couponDiscountAmount" value=""
+                                hidden>
+                            <input type="text" id="" name="appliedgrandTotal" class="appliedgrandTotal" value="" hidden>
+                            <input type="text" name="appliedCoupon" class="appliedCoupon" value="false" hidden>
+
+                            <tbody>
+
+                                <tr>
+                                    <td><a href="#;" class="thumb"><img class="cart__image"
+                                                src="/product-images/{{product._id}}first.jpg" alt=""></a></td>
+                                    <td class="text-left">{{product.productTitle}}</td>
+                                    <td>₹ {{product.price}}</td>
+                                    <td>1</td>
+
+                                    <td>₹ {{product.price}}</td>
+                                </tr>
+
+                            </tbody>
+
+
+                            <tfoot class="font-weight-600" id="checkout_form">
+
+                                <tr>
+                                    <td colspan="4" class="text-right">Total</td>
+                                    <td>₹ {{product.price}}</td>
+                                    <input type="text" name="grandTotal" value="{{product.price}}" hidden>
+                                </tr>
+                                <tr class="dvPassport" style="display: none;">
+                                    <td colspan="4" class="text-right">Used Wallet Amount</td>
+                                    <td>- ₹ {{wallet}}</td>
+
+                                </tr>
+                                <tr class="dvPassport" style="display: none;">
+                                    <td colspan="4" class="text-right">Payable Amount</td>
+                                    <td>₹ <span class="afterwalletapplied"></span></td>
+                                    <input type="text" class="afterwalletapplied" name="amountAfterAppliedWallet"
+                                        value="" hidden>
+                                    <input type="text" class="afterwallet" name="walletApplied" value="" hidden>
+
+                                </tr>
+
+                            </tfoot>
+                            {{/if}} --}}
+                            {{!-- buy now body end --}}

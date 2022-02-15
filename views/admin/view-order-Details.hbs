@@ -1,0 +1,189 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+            <div class="card p-5">
+                <div class="p-5">
+
+                
+                <h1 style="text-align: center;">Order Details</h1>
+                {{#if orderStatus1}}
+                <div class="alert alert-warning">
+                    <span style="color: black; font-weight: bold;">Order Status : </span>{{orderStatus1}}
+                </div>
+                {{/if}}
+                {{#if orderStatus2}}
+                <div class="alert alert-info">
+                    <span style="color: black; font-weight: bold;">Order Status : </span>{{orderStatus2}}
+                </div>
+                {{/if}}
+                {{#if orderStatus3}}
+                <div class="alert alert-primary">
+                    <span style="color: black; font-weight: bold;">Order Status : </span>{{orderStatus3}}
+                </div>
+                {{/if}}
+                {{#if orderStatus4}}
+                <div class="alert alert-success">
+                    <span style="color: black; font-weight: bold;">Order Status : </span>{{orderStatus4}}
+                </div>
+                {{/if}}
+                {{#if orderStatus5}}
+                <div class="alert alert-danger">
+                    <span style="color: black; font-weight: bold;">Order Status : </span>{{orderStatus5}}
+                </div>
+                {{/if}}
+                <div class="invoice p-2">
+                 <span class="font-weight-bold d-block">Order ID: </span><span>{{orderDetails.[0].data.[0]._id}}</span>
+
+                    <span class="font-weight-bold d-block float-right me-1">Order Date : </span><br> <span class="float-right me-1">{{orderDetails.[0].data.[0].date}}</span>
+                        <span class="font-weight-bold d-block mt-1">Name : </span> <span>{{orderDetails.[0].data.[0].deliveryDetails.name}}</span>
+                        
+                        <span class="font-weight-bold d-block mt-1">Address : </span> <span>{{orderDetails.[0].data.[0].deliveryDetails.address}},</span><br><span>{{orderDetails.[0].data.[0].deliveryDetails.district}}, </span>
+                        <span>{{orderDetails.address.state}}, </span><span>{{orderDetails.[0].data.[0].deliveryDetails.pincode}}</span><br><span>landmark : {{orderDetails.[0].data.[0].deliveryDetails.landmark}}</span>
+                        <span class="font-weight-bold d-block mt-1">Phone No : </span> <span>{{orderDetails.[0].data.[0].deliveryDetails.mobile}}, {{orderDetails.[0].data.[0].deliveryDetails.alternativePhone}}</span>
+                          <span class="font-weight-bold d-block mt-1">Payment Method : </span> <span>{{orderDetails.[0].data.[0].paymentMethod}}</span>
+                      
+
+                   
+                    <div class="product border-bottom table-responsive mt2">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each orderDetails}}
+
+                                    {{#each this.data}}
+                                <tr>
+                                    <td width="20%"> <img src="/product-images/{{this.productList._id}}first.jpg" width="90">
+                                     <span class="font-size: 5px">{{this.productList.productTitle}}</span>
+                                    </td>
+                                       
+                                
+                                    <td width="20%">
+                                        <span style="font-weight: bold;"> Rs. {{this.productList.price}}</span>
+                                    </td>
+                                    <td width="20%">
+                                        <span style="font-weight: bold;">{{this.products.productsTotal.quantity}}</span>
+                                    </td>
+                                     <td width="20%">
+                                        <span style="font-weight: bold;">Rs. {{this.products.productsTotal.total}}</span>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-5">
+                            <table class="table table-borderless">
+                                <tbody class="totals">
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>$168.50</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Shipping Fee</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>$22</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Tax Fee</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>$7.65</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Discount</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span class="text-success">$168.50</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-top border-bottom">
+                                        <td>
+                                            <div class="text-left"> <span class="font-weight-bold">Grand Total</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span class="font-weight-bold">Rs.
+                                                    {{orderDetails.[0].data.[0].products.subtotal.total}}</span> </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+                {{#if cancelConfirm }}
+                    <div class="alert alert-danger">
+                        {{orderStatus5}}
+                    </div>
+                {{else}}
+                <div class="row justify-content-center">
+                   {{#if packed}}
+                 <div class="col-md-3">
+                        <a href="/admin/packed/{{orderDetails.[0].data.[0]._id}}" class="btn btn-info">Packed</a>
+                    </div>
+                   {{else}}
+                     <div class="col-md-3">
+                        <p class="text-success">Packed >></p>
+                    </div>
+                   
+                   {{/if}}
+                      {{#if shipped}}
+                   
+                    <div class="col-md-3">
+                         <a href="/admin/shipped/{{orderDetails.[0].data.[0]._id}}" class="btn btn-primary">Shipped</a>
+                        </div>
+                   {{else}}
+                    <div class="col-md-3">
+                        <p class="text-success">Shipped >></p>
+                    </div>
+                   {{/if}}
+                     {{#if delivered}}
+                   
+                    <div class="col-md-3">
+                        <a href="/admin/delivered/{{orderDetails.[0].data.[0]._id}}" class="btn btn-success">Delivered</a>
+                    </div>
+                   {{else}}
+                    <div class="col-md-3">
+                        <p class="text-success">Delivered >></p>
+                    </div>
+                   {{/if}}
+                    {{#if cancelled}}
+                   <div class="col-md-3">
+                        <a href="/admin/rejected/{{orderDetails.[0].data.[0]._id}}" class="btn btn-danger">Cancel</a>
+                    </div>
+                  
+                   {{/if}}
+                    
+                </div>
+                {{/if}}
+                </div>
+                <div class="d-flex justify-content-between footer p-3 mt-4"> <span><a href=""> << Back
+                            </a></span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

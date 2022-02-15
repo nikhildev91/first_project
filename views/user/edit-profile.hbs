@@ -1,0 +1,83 @@
+<div class="card p-5 m-5" style="justify-content: center;">
+    <!-- Account Details -->
+    <div class="container">
+        <h3>Edit Profile </h3>
+        <div class="account-login-form bg-light-gray padding-20px-all">
+            <form action="/edit-profile/{{userProfile._id}}" enctype="multipart/form-data" method="post">
+                <fieldset>
+                    <div class="row">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                            <label for="input-firstname">First Name <span class="required-f">*</span></label>
+                            <input name="firstname" value="{{userProfile.firstname}}" id="input-firstname"
+                                class="form-control" type="text" placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                            <label for="input-lastname">Last Name <span class="required-f">*</span></label>
+                            <input name="lastname" value="{{userProfile.lastname}}" id="input-lastname"
+                                class="form-control" type="text" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                            <label for="input-firstname">Phone <span class="required-f">*</span></label>
+                            <input name="phone" value="{{userProfile.phone}}" id="input-mobile" class="form-control"
+                                type="text" placeholder="Enter Mobile Number">
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                            <label for="input-email">Email <span class="required-f">*</span></label>
+                            <input name="email" value="{{userProfile.email}}" id="input-email" class="form-control"
+                                type="text" placeholder="Enter Email">
+
+                        </div>
+                    </div>
+
+
+                    <img src="" alt="" style="width: 300px; height:auto; justify-content: center;" id="imgview1"
+                        class="mt-3">
+
+
+
+
+                    <div class="row">
+                        <div id="image-box1" style="width: 400px; height: 250px; display: none;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary mt-2" type="button" style="display: none;"
+                                id="crop-btn1">Done</button>
+                        </div>
+                        <div class="mt-5 col-md-6">
+                            <label for="">Profile Image</label>
+
+                            <input type="file" name="image1" id="file1" class="form-control mt-2"
+                                onchange="return cropProfileImage()">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group mt-5">
+
+                        <div class="col-md-8">
+                            <button type="reset" class="btn btn-danger waves-effect" style="float: right;">
+                                Cancel
+                            </button>
+
+                            <button type="submit" id="confirm-btn1" class="btn btn-primary waves-light mr-1"
+                                style="float: right;">
+                                Submit
+                            </button>
+
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- End Account Details -->
+
+</div>

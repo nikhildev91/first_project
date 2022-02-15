@@ -1,0 +1,139 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div class="row">
+    <div class="col-12">
+        <div>
+            <div class="card-box widget-inline">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 widget-inline-box">
+                        <div class="text-center p-3">
+                            <h2 class="mt-2">
+                                <b>{{totalSales.totalSales}}</b>
+                            </h2>
+                            <p class="text-muted mb-0">Lifetime Total Sales</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6 widget-inline-box">
+                        <div class="text-center p-3">
+                            <h2 class="mt-2">
+                                <b>₹ {{income}}</b>
+                            </h2>
+                            <p class="text-muted mb-0">Income Amounts</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6 widget-inline-box">
+                        <div class="text-center p-3">
+                            <h2 class="mt-2">
+                                <b>₹ {{netIncome}}</b>
+                            </h2>
+                            <p class="text-muted mb-0">Total Profile</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="text-center p-3">
+                            <h2 class="mt-2">
+                                <b>{{userCount}}</b>
+                            </h2>
+                            <p class="text-muted mb-0">Total Users</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6 d-flex justify-content-center">
+        <div class="card-box d-flex justify-content-center">
+           
+           
+            <div id="columnchart_values" ></div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card-box">
+           
+           
+            <div id="curve_chart" ></div>
+        </div>
+    </div>
+     {{!-- <div class="col-lg-12">
+        <div class="card-box d-flex justify-content-center">
+        
+           
+            <div id="dual_x_div" style="width: auto; height: 500px;"></div>
+        </div>
+    </div> --}}
+
+    <div class="col-lg-12">
+        <div class="card-box d-flex justify-content-center">
+            
+           
+            <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+    </div>
+
+    
+
+ 
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <h5 class="mt-0 font-14 mb-3">Recent Orders</h5>
+            <div class="table-responsive">
+                <table class="table table-hover mails m-0 table table-actions-bar table-centered">
+                    <thead>
+                        <tr>
+                            <th>User Profile</th>
+                            <th>Order Date</th>
+                            <th>Order ID</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each recentOrders}}
+                        <tr>
+                            <td>
+
+
+                                <img src="/profile-images/{{this.userId}}profile.jpg" alt="contact-img"
+                                    title="contact-img" class="rounded-circle avatar-sm" />
+
+                                <span style="margin-left: 5px;">{{this.deliveryDetails.name}}</span>
+                            </td>
+
+                            <td>
+                                {{this.date}}
+                            </td>
+
+                            <td>
+                                {{this._id}}</a>
+                            </td>
+
+                            <td>
+                                {{this.status}}
+                            </td>
+
+                            <td>
+                                ₹ {{this.products.subtotal.total}}
+                            </td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

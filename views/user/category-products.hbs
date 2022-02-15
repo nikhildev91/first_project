@@ -1,0 +1,537 @@
+<div id="page-content">
+	<!--Body Container-->
+	<!--Breadcrumbs-->
+	<div class="breadcrumbs-wrapper">
+		<div class="container">
+			<div class="breadcrumbs"><a href="/" title="Back to the home page">Home</a> <span
+					aria-hidden="true">|</span> <span>{{products.[0].category}}</span></div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			<!--Sidebar-->
+			<div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+				<div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+				<div class="sidebar_tags">
+					<!--Categories-->
+					<div class="sidebar_widget categories filter-widget">
+						<div class="widget-title">
+							<h2>Categories</h2>
+						</div>
+						<div class="widget-content" style="">
+							<ul class="sidebar_categories">
+								{{#each category}}
+								<li class="level1 sub-level"><a href="#;" class="site-nav">{{this.category}}</a>
+									{{#if this.subcategory}}
+									<ul class="sublinks" style="display: none;">
+										{{#each this.subcategory}}
+										<li class="level2"><a
+												href="/subcategory-products/{{../this.category}}/{{ this.subcategory }}"
+												class="site-nav">{{this.subcategory}}</a></li>
+										{{/each}}
+									</ul>
+									{{/if}}
+								</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="sidebar_widget filterBox filter-widget">
+						<div class="widget-title">
+							<h2>Price</h2>
+						</div>
+						<form action="/price-filter" method="post" class="price-filter">
+							<div id="slider-range"></div>
+							<div class="row">
+								<div class="col-6">
+									<p class=""><input id="amount" type="text" name="price"></p>
+									<input type="text" name="category" value="{{products.[0].category}}" hidden>
+								</div>
+								<div class="col-6 text-right margin-25px-top">
+									<button type="submit" class="btn btn-secondary btn--small">filter</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div class="sidebar_widget filterBox filter-widget brand-filter">
+						<div class="widget-title">
+							<h2>Brands</h2>
+						</div>
+						<ul>
+							{{#each brands}}
+							<li>
+								<input type="checkbox" class="proBrandFilter" value="allen-vela" id="check1"
+									data-brand="{{this.brand}}" data-cat="{{../products.[0].category}}">
+								<label for="check1"><span><span></span></span>{{this.brand}}</label>
+							</li>
+							{{/each}}
+
+
+						</ul>
+					</div>
+					<!--Popular Products-->
+					<div class="sidebar_widget sidePro">
+						<div class="widget-title">
+							<h2>Popular Products</h2>
+						</div>
+						<div class="widget-content">
+							<div class="sideProSlider grid-products">
+								{{#each sideProduct}}
+								<div class="item">
+									<!-- start product image -->
+									<div class="product-image">
+										<!-- start product image -->
+										<a href="/category-check/product-details/{{this._id}}" class="product-img">
+											<!-- image -->
+											<img class="primary blur-up lazyload"
+												data-src="/product-images/{{this._id}}first.jpg"
+												src="/product-images/{{this._id}}first.jpg" alt="" title="">
+											<!-- End image -->
+											<!-- Hover image -->
+											<img class="hover blur-up lazyload"
+												data-src="/product-images/{{this._id}}second.jpg"
+												src="/product-images/{{this._id}}second.jpg" alt="" title="">
+											<!-- End hover image -->
+										</a>
+										<!-- end product image -->
+
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<form class="add" action="/">
+														<button class="btn-icon btn btn-addto-cart add-to-cart"
+															data-proid="{{this._id}}" type="button" tabindex="0">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</form>
+													<!--end Cart Button-->
+												</li>
+
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<button class="btn-icon wishlist add-to-wishlist"
+															data-proid="{{this._id}}">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</button>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+
+											</ul>
+										</div>
+										<!--End Product Button-->
+									</div>
+									<!-- end product image -->
+									<!--start product details -->
+									<div class="product-details text-center">
+										<!-- product name -->
+										<div class="product-name">
+											<a
+												href="/category-check/product-details/{{this._id}}">{{this.productTitle}}</a>
+										</div>
+										<!-- End product name -->
+										<!-- product price -->
+										<div class="product-price">
+											<span class="price">₹ {{this.price}}</span>
+										</div>
+										<!-- End product price -->
+										<!--Product Review-->
+										{{!-- <div class="product-review">
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star-o"></i>
+										</div> --}}
+										<!--End Product Review-->
+										<!--Color Variant -->
+										{{!-- <ul class="swatches">
+											<li class="swatch small rounded navy"><span
+													class="tooltip-label">Navy</span></li>
+											<li class="swatch small rounded green"><span
+													class="tooltip-label">Green</span></li>
+											<li class="swatch small rounded gray"><span
+													class="tooltip-label">Gray</span></li>
+											<li class="swatch small rounded aqua"><span
+													class="tooltip-label">Aqua</span></li>
+											<li class="swatch small rounded orange"><span
+													class="tooltip-label">Orange</span></li>
+										</ul> --}}
+										<!-- End Variant -->
+									</div>
+									<!-- End product details -->
+								</div>
+								{{/each}}
+								{{!-- <div class="item">
+									<!-- start product image -->
+									<div class="product-image">
+										<!-- start product image -->
+										<a href="product-layout1.html" class="product-img">
+											<!-- image -->
+											<img class="primary blur-up lazyload"
+												data-src="/product-images/{{this._id}}first.jpg"
+												src="/product-images/{{this._id}}first.jpg" alt="" title="">
+											<!-- End image -->
+											<!-- Hover image -->
+											<img class="hover blur-up lazyload"
+												data-src="/user-assets/images/product-images/product2-1.jpg"
+												src="/user-assets/images/product-images/product2-1.jpg" alt="" title="">
+											<!-- End hover image -->
+										</a>
+										<!-- end product image -->
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<form class="add"
+														action="https://www.annimexweb.com/items/avone/cart-variant1.html"
+														method="post">
+														<button class="btn-icon btn btn-addto-cart" type="button"
+															tabindex="0">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</form>
+													<!--end Cart Button-->
+												</li>
+												<li>
+													<!--Quick View Button-->
+													<a href="javascript:void(0)" title="Quick View"
+														class="btn-icon quick-view-popup quick-view" data-toggle="modal"
+														data-target="#content_quickview">
+														<i class="icon anm anm-search-plus-l"></i>
+														<span class="tooltip-label">Quick View</span>
+													</a>
+													<!--End Quick View Button-->
+												</li>
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<a class="btn-icon wishlist add-to-wishlist"
+															href="my-wishlist.html">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</a>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+												<li>
+													<!--Compare Button-->
+													<div class="compare-btn">
+														<a class="btn-icon compare add-to-compare"
+															href="compare-style2.html" title="Add to Compare">
+															<i class="icon icon-reload"></i>
+															<span class="tooltip-label">Add to Compare</span>
+														</a>
+													</div>
+													<!--End Compare Button-->
+												</li>
+											</ul>
+										</div>
+										<!--End Product Button-->
+									</div>
+									<!-- end product image -->
+									<!--start product details -->
+									<div class="product-details text-center">
+										<!-- product name -->
+										<div class="product-name">
+											<a href="product-layout1.html">Innerbloom Puffer Jacket</a>
+										</div>
+										<!-- End product name -->
+										<!-- product price -->
+										<div class="product-price">
+											<span class="price">$199.01</span>
+										</div>
+										<!-- End product price -->
+										<!--Product Review-->
+										<div class="product-review">
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+										</div>
+										<!--End Product Review-->
+										<!-- Color Variant -->
+										<ul class="swatches">
+											<li class="swatch small rounded black"><span
+													class="tooltip-label">Black</span></li>
+											<li class="swatch small rounded navy"><span
+													class="tooltip-label">Navy</span></li>
+											<li class="swatch small rounded purple"><span
+													class="tooltip-label">Purple</span></li>
+										</ul>
+										<!-- End Variant -->
+									</div>
+									<!-- End product details -->
+								</div>
+								<div class="item">
+									<!-- start product image -->
+									<div class="product-image">
+										<!-- start product image -->
+										<a href="product-layout1.html" class="product-img">
+											<!-- image -->
+											<img class="primary blur-up lazyload"
+												data-src="/user-assets/images/product-images/product3.jpg"
+												src="/user-assets/images/product-images/product3.jpg" alt="" title="">
+											<!-- End image -->
+											<!-- Hover image -->
+											<img class="hover blur-up lazyload"
+												data-src="/user-assets/images/product-images/product3-1.jpg"
+												src="/user-assets/images/product-images/product3-1.jpg" alt="" title="">
+											<!-- End hover image -->
+										</a>
+										<!-- end product image -->
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<form class="add"
+														action="https://www.annimexweb.com/items/avone/cart-variant1.html"
+														method="post">
+														<button class="btn-icon btn btn-addto-cart" type="button"
+															tabindex="0">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</form>
+													<!--end Cart Button-->
+												</li>
+												<li>
+													<!--Quick View Button-->
+													<a href="javascript:void(0)" title="Quick View"
+														class="btn-icon quick-view-popup quick-view" data-toggle="modal"
+														data-target="#content_quickview">
+														<i class="icon anm anm-search-plus-l"></i>
+														<span class="tooltip-label">Quick View</span>
+													</a>
+													<!--End Quick View Button-->
+												</li>
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<a class="btn-icon wishlist add-to-wishlist"
+															href="my-wishlist.html">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</a>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+												<li>
+													<!--Compare Button-->
+													<div class="compare-btn">
+														<a class="btn-icon compare add-to-compare"
+															href="compare-style2.html" title="Add to Compare">
+															<i class="icon icon-reload"></i>
+															<span class="tooltip-label">Add to Compare</span>
+														</a>
+													</div>
+													<!--End Compare Button-->
+												</li>
+											</ul>
+										</div>
+										<!--End Product Button-->
+									</div>
+									<!-- end product image -->
+									<!--start product details -->
+									<div class="product-details text-center">
+										<!-- product name -->
+										<div class="product-name">
+											<a href="product-layout1.html">Button Up Top Black</a>
+										</div>
+										<!-- End product name -->
+										<!-- product price -->
+										<div class="product-price">
+											<span class="price">$99.01</span>
+										</div>
+										<!-- End product price -->
+										<!--Product Review-->
+										<div class="product-review">
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star"></i>
+											<i class="font-13 fa fa-star-o"></i>
+											<i class="font-13 fa fa-star-o"></i>
+											<i class="font-13 fa fa-star-o"></i>
+										</div>
+										<!--End Product Review-->
+										<!-- Color Variant -->
+										<ul class="swatches">
+											<li class="swatch small rounded red"><span class="tooltip-label">red</span>
+											</li>
+											<li class="swatch small rounded orange"><span
+													class="tooltip-label">orange</span></li>
+											<li class="swatch small rounded yellow"><span
+													class="tooltip-label">yellow</span></li>
+										</ul>
+										<!-- End Variant -->
+									</div>
+									<!-- End product details -->
+								</div> --}}
+							</div>
+						</div>
+					</div>
+
+					<!--End Popular Products-->
+
+				</div>
+			</div>
+			<div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
+				<div class="page-title">
+					<h1>{{products.[0].category}}'s Products</h1>
+				</div>
+
+				<div class="category-banner">
+					<img src="/banner-images/{{productBanner._id}}image.jpg"
+						data-src="/banner-images/{{productBanner._id}}image.jpg" alt="">
+				</div>
+
+
+				<!--Toolbar-->
+				<button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
+				<div class="toolbar">
+					<div class="filters-toolbar-wrapper">
+						<div class="row">
+
+							<div
+								class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+								<span class="filters-toolbar__product-count"></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!--End Toolbar-->
+				<!--Product Grid-->
+				<div class="product-load-more" id="product_list">
+					<div class="grid-products grid--view-items">
+
+
+						<div class="row">
+							{{#each products}}
+
+							<div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
+								<!-- start product image -->
+								<div class="product-image" style="">
+									<!-- start product image -->
+
+
+									<a href="product-details/{{this._id}}" class="product-img">
+										<!-- image -->
+										<img class="primary blur-up lazyload"
+											data-src="/product-images/{{this._id}}first.jpg"
+											src="/product-images/{{this._id}}first.jpg" alt="" title="">
+										<!-- End image -->
+										<!-- Hover image -->
+										<img class="hover blur-up lazyload"
+											data-src="/product-images/{{this._id}}first.jpg"
+											src="/product-images/{{this._id}}first.jpg" alt="" title="">
+										<!-- End hover image -->
+										<!-- product label -->
+
+										{{#if this.offer}}
+										<div class="product-labels"><span class="lbl on-sale">{{this.discount}}% OFF</span>
+										</div>
+										{{/if}}
+										<!-- End product label -->
+
+										<!-- end product image -->
+
+
+										<!--Product Button-->
+										<div class="button-set style1">
+											<ul>
+												<li>
+													<!--Cart Button-->
+													<div class="btn-addto-cart">
+														<button class="btn-icon btn btn-addto-cart add-to-cart"
+															data-proid="{{this._id}}">
+															<i class="icon anm anm-cart-l"></i>
+															<span class="tooltip-label">Add to Cart</span>
+														</button>
+													</div>
+													<!--end Cart Button-->
+												</li>
+												<li>
+
+												</li>
+												<li>
+													<!--Wishlist Button-->
+													<div class="wishlist-btn">
+														<button class="btn-icon wishlist add-to-wishlist"
+															data-proid="{{this._id}}">
+															<i class="icon anm anm-heart-l"></i>
+															<span class="tooltip-label">Add To Wishlist</span>
+														</button>
+													</div>
+													<!--End Wishlist Button-->
+												</li>
+												<li>
+
+												</li>
+											</ul>
+										</div>
+										<!--End Product Button-->
+								</div>
+								<!-- end product image -->
+								<!--start product details -->
+								<div class="product-details text-center">
+									<!-- product name -->
+									<div class="product-name">
+										<a href="product-details/{{this._id}}">{{this.productTitle}}</a>
+									</div>
+									<!-- End product name -->
+									<!-- product price -->
+									{{#if this.offer}}
+									<div class="product-price">
+										<span class="price"> <del class="disabled">Rs. {{this.oldPrice}}</del><b><span
+													style="margin-left: 10px;"> Rs. {{this.price}}</span> </b></span>
+									</div>
+									{{else}}
+									<div class="product-price">
+										<span class="price"><b>Rs. {{this.price}}</b></span>
+									</div>
+									{{/if}}
+									<!-- End product price -->
+
+									<a href="/add-to-cart/{{this._id}}" class="btn btn-dark mt-3">Buy Now</a>
+
+								</div>
+								<!-- End product details -->
+							</div>
+							{{/each}}
+
+						</div>
+
+
+					</div>
+					<!--End Product Grid-->
+					<!--Load More Button-->
+					<div class="infinitpaginOuter">
+						<div class="infinitpagin">
+							<a href="#" class="btn loadMore">Load More</a>
+						</div>
+					</div>
+					<!--End Load More Button-->
+				</div>
+			</div>
+			<!--End Main Content-->
+		</div>
+
+	</div>
+	<!--End Body Container-->
+
+</div>
+<!--End Page Wrapper-->

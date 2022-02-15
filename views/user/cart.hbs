@@ -1,0 +1,345 @@
+<div id="page-content">
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a> <span
+                    aria-hidden="true">|</span> <span>My Cart</span></div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <!--Page Title with Image-->
+    <div class="page-title">
+        <h1>My Cart</h1>
+    </div>
+    <!--End Page Title with Image-->
+    <div class="container">
+        <form action="/place-order" method="post">
+            <input type="text" name="cartId" value="{{cartId}}" hidden>
+            <div class="row">
+                {{#if cartProducts}}
+                {{#each cartProducts}}
+                <div class="col-lg-4 mx-auto" style="display: flex; justify-content: center;">
+                    <div class="card p-3 border-secondary" style="width: 18rem;"
+                        id="{{ this._id }}{{ this.product._id }}">
+                        <a class="btn btn--secondary cart__remove" title="Remove tem"
+                            data-productid="{{this.product._id}}" data-cartid="{{this._id}}"><span
+                                class="text-light">Remove</span></a>
+                        <img src="/product-images/{{this.product._id}}first.jpg" class="card-img-top mt-3" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.product.productTitle}}</h5>
+                            <h6>Price : {{this.product.price}}</h6>
+                            <input hidden class="each_product{{this.product._id}}" value="{{ this.product.price }}">
+
+                            <h6>Quantity : </h6>
+                            <div class="cart__qty text-center">
+                                <div class="qtyField">
+                                    <a class="qtyBtn minus btn_chng_qty" data-type="-1" data-id="{{this._id}}"
+                                        data-productid="{{this.product._id}}" data-userid="{{this.user}}"><i
+                                            class="icon icon-minus"></i></a>
+                                    <p class="cart__qty-input qty qty{{ this.product._id}}" id="{{this.product._id}}">
+                                        {{this.quantity}}
+                                    </p>
+                                    <a class="qtyBtn plus btn_chng_qty" data-type="1" data-id="{{this._id}}"
+                                        data-productid="{{this.product._id}}" data-userid="{{this.user}}"><i
+                                            class="icon icon-plus"></i></a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="d-flex">
+                                <div><span style="font-size: 15px; font-weight: bold;">Total Price : </span><span
+                                        style="font-size: 25px; font-weight: bold;">₹&nbsp;</span> </div>
+                                <div><span class="money product_total{{ this.product._id }}"
+                                        style="font-size: 25px; font-weight: bold; text-align: center;">
+                                        {{this.total}}</span></div>
+                                <input type="number" name="productTotal" class="product_total_val{{ this.product._id }}"
+                                    value="{{this.total}}" hidden>
+
+                            </div>
+
+
+
+
+                            {{!-- <a href="#" class="btn btn-primary d-flex">Go somewhere</a> --}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+                {{else}}
+
+                <div class="col-12">
+                    <h2 style="text-align: center; margin-top: 50px;">No Products In Cart</h2>
+                </div>
+                {{/if}}
+            </div>
+            <div class="row">
+
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+
+                    {{!-- <form action="#" method="post" class="cart style2"> --}}
+                    {{!-- <form action="/place-order" method="post">
+                    <input type="text" name="cartId" value="{{cartId}}" hidden> --}}
+                    {{!-- <table>
+                        <thead class="cart__row cart__header">
+                            <tr>
+                                <th colspan="2" class="text-center">Product</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Total</th>
+                                <th class="action">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody> --}}
+                    {{!-- {{#if cartProducts}}
+                            {{#each cartProducts}} --}}
+                    {{!-- <tr id="{{ this._id }}{{ this.product._id }}" --}}
+                    {{!-- class="cart__row border-bottom line1 cart-flex border-top p-3"> --}}
+
+                    {{!-- <td class="cart__image-wrapper cart-flex-item">
+                                    <a href="#"><img class="cart__image"
+                                            src="/product-images/{{this.product._id}}first.jpg"
+                                            alt="{{this.product.productTitle}}"></a>
+                                </td> --}}
+                    {{!-- <td class="cart__meta small--text-left cart-flex-item">
+                                    <div class="list-view-item__title">
+                                        <a href="#">{{this.product.productTitle}}</a>
+                                    </div>
+
+
+                                </td> --}}
+                    {{!-- <td class="cart__price-wrapper cart-flex-item text-center">
+                                    <span class="money">₹ {{this.product.price}}</span> --}}
+                    <input hidden class="each_product{{this.product._id}}" value="{{ this.product.price }}">
+                    {{!-- </td> --}}
+
+                    {{!-- <td class="cart__update-wrapper cart-flex-item text-center">
+                                    <div class="cart__qty text-center">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus btn_chng_qty" data-type="-1" data-id="{{this._id}}"
+                                                data-productid="{{this.product._id}}" data-userid="{{this.user}}"><i
+                                                    class="icon icon-minus"></i></a>
+                                            <p class="cart__qty-input qty qty{{ this.product._id}}"
+                                                id="{{this.product._id}}">{{this.quantity}}
+                                            </p>
+                                            <a class="qtyBtn plus btn_chng_qty" data-type="1" data-id="{{this._id}}"
+                                                data-productid="{{this.product._id}}" data-userid="{{this.user}}"><i
+                                                    class="icon icon-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </td> --}}
+
+                    {{!-- <td class="small--hide cart-price text-center">
+                                    <div class="d-flex">
+                                        <div><span>₹&nbsp;</span> </div>
+                                        <div><span class="money product_total{{ this.product._id }}">
+                                                {{this.total}}</span></div>
+
+                                    </div>
+
+                                </td> --}}
+                    <input type="number" name="productTotal" class="product_total_val{{ this.product._id }}"
+                        value="{{this.total}}" hidden>
+
+
+                    {{!-- 
+                                <td class="text-center small--hide"><a class="btn btn--secondary cart__remove"
+                                        title="Remove tem" data-productid="{{this.product._id}}"
+                                        data-cartid="{{this._id}}"><span class="text-light">X</span></a></td> --}}
+                    {{!-- </tr> --}}
+                    {{!-- {{/each}}
+                            {{else}} --}}
+                    {{!-- <div class="no_product" style="display: none;">
+
+                                <tr>
+
+                                    <td colspan="6" class="text-center p-5">
+                                        <p class="btn btn--link btn--small cart-continue m-5"
+                                            style="font-weight: bolder; font-size: 25px;">Empty Cart Product</p>
+                                    </td>
+                                </tr>
+                            </div> --}}
+                    {{!-- {{/if}} --}}
+
+                    {{!-- </tbody> --}}
+                    {{!-- <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-left"><a href="/"
+                                        class="btn btn--link btn--small cart-continue"><i
+                                            class="anm anm-chevron-cir-left"></i> Continue shopping</a></td>
+                                <td colspan="3" class="text-right">
+                                    <button type="submit" name="clear" class="btn btn--link btn--small small--hide"><i
+                                            class="icon icon anm anm-times-l"></i> Clear Shoping Cart</button>
+                                </td>
+                            </tr>
+                        </tfoot> --}}
+                    {{!-- </table> --}}
+
+                </div>
+                <div class="container mt-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4 cart-col">
+                            <h5 hidden>Discount Codes</h5>
+
+                            <div class="form-group">
+                                <label for="address_zip" hidden>Enter your coupon code if you have one.</label>
+                                {{!-- <input type="text" name="coupon" hidden> --}}
+                            </div>
+                            <div class="actionRow">
+                                <div><input type="button" class="btn btn-secondary btn--small" value="Apply Coupon"
+                                        hidden>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        {{!-- <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4 cart-col">
+                            <h5 hidden>Discount Codes</h5>
+
+                            <div class="form-group">
+                                <label for="address_zip" hidden>Enter your coupon code if you have one.</label>
+                                <input type="text" hidden>
+                            </div>
+                            <div class="actionRow" hidden>
+                                <div><input type="button" class="btn btn-secondary btn--small" value="Apply Coupon">
+                                </div>
+                            </div>
+
+                        </div> --}}
+
+
+                        {{#if ordebtndisable}}
+
+                        {{else}}
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer" style="display: block;">
+                            <div class="solid-border">
+                                <div class="row border-bottom pb-2" id="sub_total_div">
+                                    <span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
+
+                                    <span class="col-12 col-sm-6 text-right"><span class="money">₹&nbsp; <span
+                                                class="cart_sub_total"
+                                                id="total">{{total.subtotal.total}}</span></span></span>
+
+                                    <input type="text" name="subTotal" class="cart_sub_total"
+                                        value="{{total.subtotal.total}}" hidden>
+                                </div>
+                                {{!-- <div class="row border-bottom pb-2 pt-2">
+                                <span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
+                                <span class="col-12 col-sm-6 text-right">$10.00</span>
+                            </div> --}}
+                                {{!-- <div class="row border-bottom pb-2 pt-2">
+                                <span class="col-12 col-sm-6 cart__subtotal-title">Shipping</span>
+                                <span class="col-12 col-sm-6 text-right">Free shipping</span>
+                            </div> --}}
+                                {{!-- <div class="row border-bottom pb-2 pt-2" >
+                                <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Grand Total</strong></span>
+                                <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
+                                        class="money cart_sub_total">{{total.subtotal.total}}</span></span>
+                            </div> --}}
+                                {{!-- <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div> --}}
+
+                                <input type="submit" name="checkout" id="cartCheckout"
+                                    class="btn btn--small-wide checkout mt-4" value="Proceed To Checkout">
+                                <div class="paymnet-img"><img src="/user-assets/images/payment-img.jpg" alt="Payment">
+                                </div>
+                                <p><a href="#;">Checkout with Multiple Addresses</a></p>
+                            </div>
+
+        </form>
+    </div>
+    {{/if}}
+</div>
+</div>
+<!--End Main Content-->
+</div>
+
+</div>
+<!--End Body Container-->
+
+</div>
+<!--End Page Wrapper-->
+
+
+<!--Scoll Top-->
+<span id="site-scroll"><i class="icon anm anm-arw-up"></i></span>
+<!--End Scoll Top-->
+{{#if userSession}}
+<!--MiniCart Drawer-->
+<div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="cart-drawer" class="block block-cart">
+                <a href="javascript:void(0);" class="close-cart" data-dismiss="modal" aria-label="Close"><i
+                        class="anm anm-times-r"></i></a>
+                <h4>Your cart ({{cartCount}} Items)</h4>
+                <div class="minicart-content">
+                    <ul class="clearfix">
+                        {{#each cartProducts}}
+                        <li class="item clearfix">
+                            <a class="product-image" href="#">
+                                <img src="/product-images/{{this.product._id}}first.jpg"
+                                    alt="{{this.product.productTitle}}" title="">
+                            </a>
+                            <div class="product-details">
+                                <a href="#" class="remove"><i class="anm anm-times-sql" aria-hidden="true"></i></a>
+
+                                <a class="product-title" href="cart-style1.html">{{this.product.productTitle}}</a>
+
+                                <div class="wrapQtyBtn">
+                                    <div class="qtyField">
+                                        <a class="qtyBtn minus btn_chng_qty" data-type="-1" data-id="{{this._id}}"
+                                            data-productid="{{this.product._id}}"><i class="anm anm-minus-r"
+                                                aria-hidden="true"></i></a>
+                                        <span class="cart__qty-input qty qty_{{this.product._id}}"
+                                            id="{{this.product._id}}">{{this.quantity}}</span>
+                                        <a class="qtyBtn plus btn_chng_qty" data-type="1" data-id="{{this._id}}"
+                                            data-productid="{{this.product._id}}"><i class="anm anm-plus-r"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="priceRow">
+                                    <div class="product-price">
+                                        <span class="money">Rs. {{this.product.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+
+                    </ul>
+                </div>
+                <div class="minicart-bottom">
+                    {{!-- <div class="subtotal list">
+                        <span>Shipping:</span>
+                        <span class="product-price">$10.00</span>
+                    </div>
+                    <div class="subtotal list">
+                        <span>Tax:</span>
+                        <span class="product-price">$05.00</span>
+                    </div>
+                    <div class="subtotal">
+                        <span>Total:</span>
+                        <span class="product-price">$93.13</span>
+                    </div>
+                    <button type="button" class="btn proceed-to-checkout">Proceed to Checkout</button> --}}
+                    <a href="/add-to-cart" class="btn btn-secondary cart-btn">View Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End MiniCart Drawer-->
+{{/if}}
+
+<!-- Including Jquery -->
+<script src="/user-assets/js/vendor/jquery-min.js"></script>
+<script src="/user-assets/js/vendor/js.cookie.js"></script>
+<!-- Including Javascript -->
+<script src="/user-assets/js/plugins.js"></script>
+<script src="/user-assets/js/main.js"></script>
+
+</div>

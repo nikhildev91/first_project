@@ -1,0 +1,70 @@
+<h1 style="text-align: center;">Sales Report</h1>
+
+<div class="col-lg-12">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-center">
+    {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active h4 btn btn-info" aria-current="page" href="/admin/sales-report">Sales Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active h4 ms-2 btn btn-info" href="/admin/weekly-sales-report">Weekly</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active h4 ms-2 btn btn-info" href="/admin/monthly-sales-report">Monthly</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active h4 ms-2 btn btn-info" href="/admin/annually-sales-report">Annually</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+<div class="co1-12 mt-3">
+
+  
+
+  {{!-- <table class="table table-bordered mt-2" id="datatable-buttons"> --}}
+    <div class="col-md-4 float-left mb-3">
+  <input type="date" id="fromDate" placeholder="From" style="height: 30px;">
+  <label for="">To</label>
+  <input type="date" id="toDate" placeholder="To" style="height: 30px;">
+  <button type="button" class="btn btn-dark filter_btn">Filter</button>
+
+</div>
+    <table id="datatable-buttons1" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+   <thead>
+      <tr>
+        <th>Date</th>
+         <th>Product Name</th>
+        <th>Status</th>
+        <th>Qauntity</th>
+        <th>Amount</th>
+        <th>Revenue</th>
+      
+        
+      </tr>
+    </thead>
+    <tbody id="myTable">
+     {{#each salesReport}}
+      <tr>
+        <td>{{ this._id.date }}</td>
+        <td>{{this._id.proname}}</td>
+        <td style="text-align: center;">{{this._id.status}}</td>
+        <td style="text-align: center;">{{this.quantity}}</td>
+        <td style="text-align: center;">₹ {{this.amount}}</td>
+        <td style="text-align: center;">₹ {{#distanceFixed this.revenue}} {{/distanceFixed }} </td>
+         </tr>
+         {{/each}}
+     
+    </tbody>
+  </table>
+  
+
+</div>
