@@ -677,8 +677,8 @@ if(req.body.walletApplied === "true"){
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/order-success",
-            "cancel_url": "http://localhost:3000/place-order"
+            "return_url": "https://nikhildev.tech/order-success",
+            "cancel_url": "https://nikhildev.tech/place-order"
         },
         "transactions": [{
             "amount": {
